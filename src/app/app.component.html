@@ -1,0 +1,29 @@
+<div class="page-wrapper">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <a href="/" mat-flat-button color="primary">Open Library</a>
+      <div class="example-button-row">
+        <a routerLink="/films" routerLinkActive="is-active" mat-flat-button color="primary">
+          Фильмы
+        </a>
+        <a routerLink="/favorites"  routerLinkActive="is-active" mat-flat-button color="primary">
+          Избранное
+        </a>
+      </div>
+      <span class="example-spacer"></span>
+      <button mat-button class="">
+        <img width="40" src="https://img.icons8.com/color/48/000000/usa.png"/>
+      </button>
+      <button mat-button class="">
+        <img width="40" src="https://img.icons8.com/color/48/000000/russian-federation.png"/>
+      </button>
+      <button mat-icon-button class="example-icon burger-menu" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <main role="main" class="container">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+

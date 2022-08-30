@@ -1,0 +1,25 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-button-row .is-active {
+  background: rgba(0, 0, 0, .2);
+}
+
+.page-wrapper .container {
+  flex-grow: 1;
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  max-width: 1344px;
+}
+
+.burger-menu {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .burger-menu {
+    display: block;
+  }
+}

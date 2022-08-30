@@ -1,0 +1,48 @@
+<div class="section" *ngIf="film">
+  <div class="columns">
+    <div class="column">
+      <div class="images">
+        <img *ngIf="film.poster_path; else elseBlock" src='https://image.tmdb.org/t/p/w220_and_h330_face{{film.poster_path}}' alt='{{film.title}}'>
+        <ng-template #elseBlock>
+          <img src='https://via.placeholder.com/220x330' alt='{{film.title}}'>
+        </ng-template>
+      </div>
+    </div>
+    <div class="column is-9">
+      <div class="example-loading-shade"
+           *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+      </div>
+      <div class="content">
+        <h1>{{film.title}}</h1>
+        <p> <span><b>Рейтинг фильма: </b></span>{{film.vote_average}}</p>
+        <p><span><b>Дата выхода: </b></span>{{film.release_date}}</p>
+        <p><span><b>Домашняя страницы: </b></span><a href="{{film.homepage}}">{{film.homepage}}</a></p>
+        <p><span><b>Жанр: </b></span>
+          <span *ngFor="let genre of film.genres, let i = index">{{i > 0 ? ', ' + genre.name : '' + genre.name }}</span>
+        </p>
+        <p class="description">
+          <span><b>Описание: </b></span><br>
+          {{film.overview}}
+        </p>
+        <mat-form-field class="example-chip-list" appearance="fill">
+          <mat-label>Избранное</mat-label>
+          <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let tag of favorite.tags" (removed)="remove(tag)">
+              {{tag.name}}
+              <button matChipRemove class="close">
+                X
+              </button>
+            </mat-chip>
+            <input placeholder="Новый тег..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+</div>
